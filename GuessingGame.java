@@ -29,7 +29,7 @@ GuessingGame() {
   guessButton.addActionListener(this);
   playAgainButton.addActionListener(this);
 
-  enterGuess = new JLabel("Enter your guess: "+randomNum);
+  enterGuess = new JLabel("Enter your guess: ");
   highLow = new JLabel("");
   lastGuess = new JLabel("");
 
@@ -46,22 +46,23 @@ GuessingGame() {
 public void actionPerformed(ActionEvent ae) {
   if(ae.getActionCommand().equals("Guess")) {
     int guess = Integer.parseInt(userGuess.getText());
+    lastGuess.setText("Last Guess: "+guess);
 
     if(guess == randomNum) {
-      highLow.setText("You got it! "+guess+" "+randomNum);
+      highLow.setText("You got it! ");
     }
     else if(guess > randomNum) {
-      highLow.setText("Too high! "+guess+" "+randomNum);
+      highLow.setText("Too high! ");
     }
     else {
-      highLow.setText("Too low! "+guess+" "+randomNum);
+      highLow.setText("Too low! ");
     }
   }
     
   else if(ae.getActionCommand().equals("Play Again")) {
-    int randomNum = r.nextInt(100)+1;
+    randomNum = r.nextInt(100)+1;
   
-    enterGuess.setText("Enter your guess: "+randomNum);
+    enterGuess.setText("Enter your guess: ");
     highLow.setText("");
     lastGuess.setText("");
     userGuess.setText("");
